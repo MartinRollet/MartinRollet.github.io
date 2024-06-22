@@ -6,6 +6,18 @@
     <title>Générateur de signature mail</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        .sh-src img {
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
     <main role="main" class="ml-sm-auto col-md-10 pl-0">
@@ -52,13 +64,12 @@
 
         <div class="container my-4">
             <h3>Prévisualisation</h3>
-            <div class="border p-3 overflow-auto">
-                <div id="signature-preview" class="border-0">
-                    <!-- Signature preview will be displayed here -->
-                </div>
+            <div id="signature-preview" class="border p-3 overflow-auto">
+                <!-- Signature preview will be displayed here -->
             </div>
             <button class="btn btn-secondary mt-3" onclick="copyToClipboard()">Copier dans le presse-papier</button>
             <button class="btn btn-secondary mt-3" onclick="downloadSignature()">Télécharger au format HTML</button>
+            <textarea id="signature-content" style="position:absolute; left:-9999px; top:0;"></textarea>
         </div>
     </main>
 
@@ -68,8 +79,8 @@
         }
 
         function downloadSignature() {
-            const signaturePreview = document.getElementById('signature-preview').innerHTML;
-            const blob = new Blob([signaturePreview], { type: 'text/html' });
+            const signatureContent = document.getElementById('signature-preview').innerHTML;
+            const blob = new Blob([signatureContent], { type: 'text/html' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -138,7 +149,7 @@
                                                         <tr>
                                                             <td valign="middle" style="padding: 1px 5px 1px 0px; vertical-align: middle;">
                                                                 <p style="margin: 1px;">
-                                                                    <img src="https://martinrollet.github.io/img/sign_mail.png" alt="" width="14" height="14" style="display: block; border: 0px; max-width: 14px;">
+                                                                    <img src="https://martinrollet.github.io/img/sign_mail.png" alt="" width="14" height="14" style="display: block; border: 0px; width: 14px; height: 14px;">
                                                                 </p>
                                                             </td>
                                                             <td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 15px; white-space: nowrap; color: rgb(89,87,86) !important; padding: 1px 0px; vertical-align: middle;">
@@ -152,7 +163,7 @@
                                                         <tr>
                                                             <td valign="middle" style="padding: 1px 5px 1px 0px; vertical-align: middle;">
                                                                 <p style="margin: 1px;">
-                                                                    <img src="https://martinrollet.github.io/img/sign_tel.png" alt="" width="14" height="14" style="display: block; border: 0px; max-width: 14px;">
+                                                                    <img src="https://martinrollet.github.io/img/sign_tel.png" alt="" width="14" height="14" style="display: block; border: 0px; width: 14px; height: 14px;">
                                                                 </p>
                                                             </td>
                                                             <td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 15px; white-space: nowrap; color: rgb(89,87,86) !important; padding: 1px 0px; vertical-align: middle;">
@@ -166,7 +177,7 @@
                                                         <tr>
                                                             <td valign="middle" style="padding: 1px 5px 1px 0px; vertical-align: middle;">
                                                                 <p style="margin: 1px;">
-                                                                    <img src="https://martinrollet.github.io/img/sign_place.png" alt="" width="14" height="14" style="display: block; border: 0px; max-width: 14px;">
+                                                                    <img src="https://martinrollet.github.io/img/sign_place.png" alt="" width="14" height="14" style="display: block; border: 0px; width: 14px; height: 14px;">
                                                                 </p>
                                                             </td>
                                                             <td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 15px; white-space: nowrap; color: rgb(89,87,86) !important; padding: 1px 0px; vertical-align: middle;">
@@ -180,7 +191,7 @@
                                                         <tr>
                                                             <td valign="middle" style="padding: 1px 5px 1px 0px; vertical-align: middle;">
                                                                 <p style="margin: 1px;">
-                                                                    <img src="https://martinrollet.github.io/img/sign_link.png" alt="" width="14" height="14" style="display: block; border: 0px; max-width: 14px;">
+                                                                    <img src="https://martinrollet.github.io/img/sign_link.png" alt="" width="14" height="14" style="display: block; border: 0px; width: 14px; height: 14px;">
                                                                 </p>
                                                             </td>
                                                             <td style="font-family: Arial, sans-serif; font-size: 12px; line-height: 15px; white-space: nowrap; color: rgb(89,87,86) !important; font-weight: 700; padding: 1px 0px; vertical-align: middle;">
@@ -201,7 +212,7 @@
                                                             <td width="25" style="font-size: 0px; line-height: 0px; padding: 11px 1px 0px 0px;">
                                                                 <p style="margin: 1px;">
                                                                     <a href="https://www.facebook.com/BarSatellite" target="_blank">
-                                                                        <img src="https://martinrollet.github.io/img/sign_facebook.png" alt="" width="25" height="25" style="display: block; border: 0px; max-width: 25px;">
+                                                                        <img src="https://martinrollet.github.io/img/sign_facebook.png" alt="" width="25" height="25" style="display: block; border: 0px; width: 25px; height: 25px;">
                                                                     </a>
                                                                 </p>
                                                             </td>
@@ -209,7 +220,7 @@
                                                             <td width="25" style="font-size: 0px; line-height: 0px; padding: 11px 1px 0px 0px;">
                                                                 <p style="margin: 1px;">
                                                                     <a href="https://www.instagram.com/barsatellite/" target="_blank">
-                                                                        <img src="https://martinrollet.github.io/img/sign_insta.png" alt="" width="25" height="25" style="display: block; border: 0px; max-width: 25px;">
+                                                                        <img src="https://martinrollet.github.io/img/sign_insta.png" alt="" width="25" height="25" style="display: block; border: 0px; width: 25px; height: 25px;">
                                                                     </a>
                                                                 </p>
                                                             </td>
@@ -233,16 +244,13 @@
             `;
 
             document.getElementById('signature-preview').innerHTML = signatureTemplate;
+            document.getElementById('signature-content').value = signatureTemplate;
         }
 
         function copyToClipboard() {
-            const signaturePreview = document.getElementById('signature-preview');
-            const range = document.createRange();
-            range.selectNode(signaturePreview);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
+            const signatureContent = document.getElementById('signature-content');
+            signatureContent.select();
             document.execCommand('copy');
-            window.getSelection().removeAllRanges();
             alert('Signature copiée dans le presse-papier.');
         }
     </script>
