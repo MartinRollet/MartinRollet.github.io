@@ -64,12 +64,13 @@
 
         <div class="container my-4">
             <h3>Prévisualisation</h3>
-            <div id="signature-preview" class="border p-3 overflow-auto">
-                <!-- Signature preview will be displayed here -->
+            <div class="overflow-auto">
+                <div id="signature-preview" class="p-3 overflow-auto">
+                    <!-- Signature preview will be displayed here -->
+                </div>
             </div>
             <button class="btn btn-secondary mt-3" onclick="copyToClipboard()">Copier dans le presse-papier</button>
             <button class="btn btn-secondary mt-3" onclick="downloadSignature()">Télécharger au format HTML</button>
-            <textarea id="signature-content" style="position:absolute; left:-9999px; top:0;"></textarea>
         </div>
     </main>
 
@@ -248,11 +249,16 @@
         }
 
         function copyToClipboard() {
-            const signatureContent = document.getElementById('signature-content');
-            signatureContent.select();
+            const signatureContent = document.getElementById('signature-preview');
+            const range = document.createRange();
+            range.selectNode(signatureContent);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
             document.execCommand('copy');
+            window.getSelection().removeAllRanges();
             alert('Signature copiée dans le presse-papier.');
         }
+        
     </script>
 </body>
 </html>
